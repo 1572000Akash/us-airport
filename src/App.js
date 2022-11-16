@@ -39,7 +39,9 @@ function App() {
 
   const originRef = useRef()
   const destinationRef = useRef()
-
+  useEffect(() => {
+    setdata([])
+  }, [originRef?.current?.value, destinationRef?.current?.value])
   useEffect(() => {
     if (final?.length > 0) {
       final?.map(async (val) => {
@@ -55,6 +57,7 @@ function App() {
   }
 
   const calculateRoute = async () => {
+
     if (originRef.current.value === '' || destinationRef.current.value === '') {
       return
     }
@@ -175,7 +178,7 @@ function App() {
         </HStack>
         <HStack spacing={4} mt={4} justifyContent='space-between'>
           <Text>Distance: {distance} </Text>
-          <Text>Duration: {duration} </Text>
+          
           <IconButton
             aria-label='center back'
             icon={<FaLocationArrow />}
