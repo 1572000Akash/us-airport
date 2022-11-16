@@ -33,7 +33,6 @@ function App() {
   const [map, setMap] = useState((!!null))
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [distance, setDistance] = useState('')
-  const [duration, setDuration] = useState('')
   const [final, setfinal] = useState([])
   const [data, setdata] = useState([])
 
@@ -77,13 +76,11 @@ function App() {
     }
     setDirectionsResponse(results)
     setDistance(results.routes[0].legs[0].distance.text)
-    setDuration(results.routes[0].legs[0].duration.text)
   }
 
   const clearRoute = () => {
     setDirectionsResponse(null)
     setDistance('')
-    setDuration('')
     originRef.current.value = ''
     destinationRef.current.value = ''
   }
@@ -178,7 +175,6 @@ function App() {
         </HStack>
         <HStack spacing={4} mt={4} justifyContent='space-between'>
           <Text>Distance: {distance} </Text>
-          
           <IconButton
             aria-label='center back'
             icon={<FaLocationArrow />}
